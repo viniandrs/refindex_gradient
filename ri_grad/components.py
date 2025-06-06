@@ -43,7 +43,7 @@ class Medium:
         return layer_list
 
     def get_layer_from_y(self, y):
-        index = int(self.n_layers - (y // self.layer_thickness) - 1)
+        index = int(y // self.layer_thickness)
         return self.layers[index] if index >= 0 else self.layers[0]
     
     def get_layer_index_from_y(self, y):

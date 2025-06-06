@@ -34,20 +34,25 @@ class Medium:
         layer_list = []
         y_0 = 0
         y_f = self.container.height / self.n_layers
+        refindexes = np.linspace(self.n_0, self.n_f, self.n_layers)
 
         for i in range(self.n_layers):
-            layer_list.append(Layer(y_0, y_f, self.get_layer_ri(i)))
+            layer_list.append(Layer(y_0, y_f, refindexes[i]))
             y_0 += y_f
         
         return layer_list
 
     def get_layer_from_y(self, y):
-        index = self.n_layers - (y // self.layer_thickness) - 1
+        index = int(self.n_layers - (y // self.layer_thickness) - 1)
         return self.layers[index] if index >= 0 else self.layers[0]
+    
+    def get_layer_index_from_y(self, y):
+        index = int(self.n_layers - (y // self.layer_thickness) - 1)
+        return index if index >= 0 else 0
     
 class Beam:
     def __init__(self, wavelength=550, angle=0, y_0=0):
         self.angle = angle
         self.wavelength = wavelength
-        self.y_0
+        self.y_0 = y_0
 

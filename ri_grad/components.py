@@ -6,9 +6,9 @@ class Container:
         self.height = height
 
 class Layer:
-    def __init__(self, y_0, y_f, n):
-        self.y_0 = y_0
-        self.y_f = y_f
+    def __init__(self, y_bottom, y_top, n):
+        self.y_top = y_top
+        self.y_bottom = y_bottom
         self.n = n
 
 class Medium:
@@ -32,13 +32,13 @@ class Medium:
     
     def _create_layer_list(self):
         layer_list = []
-        y_0 = 0
-        y_f = self.container.height / self.n_layers
+        y_bottom = 0
+        y_top = self.container.height / self.n_layers
         refindexes = np.linspace(self.n_0, self.n_f, self.n_layers)
 
         for i in range(self.n_layers):
-            layer_list.append(Layer(y_0, y_f, refindexes[i]))
-            y_0 += y_f
+            layer_list.append(Layer(y_bottom, y_top, refindexes[i]))
+            y_bottom += y_top
         
         return layer_list
 

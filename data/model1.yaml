@@ -1,0 +1,5 @@
+h: 10.69  # cm
+n0: 1.4381059999999999 # 0.0074 * h + 1.359
+k: 0.0074
+theta_0: 20  # degrees
+# sin_alpha_r = (1 * np.sin(np.deg2rad(20))) / n0
